@@ -1,0 +1,147 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-success table-striped">
+        <thead>
+        <tr>
+          <th>ID</th><th>Marque</th><th>Prix</th><th>Description</th><th>Quantite</th><th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of Products">
+          <td>{{p.idp}}</td>
+          <td>{{p.marque}}</td>
+          <td>{{p.prix}}</td>
+          <td>{{p.description}}</td>
+          <td>{{p.quantite}}</td>
+          <td>
+            <button (click)="confirmerSuppression(p)" class="btn btn-outline-danger shadow-sm">
+              Delete
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-outline-primary shadow-sm ms-3" (click)="getProduit(p)" data-bs-toggle="modal" data-bs-target="#myModalUpdate">
+              Update
+              <i class="bi bi-arrow-up-square"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-outline-success shadow-lg" data-bs-toggle="modal" data-bs-target="#myModal">
+        Add
+        <i class="bi bi-plus-square"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter un produit</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form (ngSubmit)="postProduit(add)" #add="ngForm">
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Marque : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.marque" name="marque">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Description : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.description" name="description">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Prix : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.prix" name="prix">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Quantité : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.quantite" name="quantite">
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-success mx-auto" type="submit">Ajouter</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- The Update Modal -->
+<div class="modal" id="myModalUpdate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Update Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Mettre à jour un produit</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Update Modal body -->
+      <div class="modal-body">
+        <form (ngSubmit)="UpdateProduit(upd)" #upd="ngForm">
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Marque : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.marque" name="marque">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Description : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.description" name="description">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Prix : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.prix" name="prix">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Quantité : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="test.quantite" name="quantite">
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-primary mx-auto" type="submit" data-bs-dismiss="modal">Update</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

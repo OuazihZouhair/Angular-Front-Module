@@ -1,0 +1,119 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <table *ngIf="Clients" class="table table-success table-striped">
+        <thead>
+        <tr>
+          <th>ID</th><th>Nom</th><th>Ville</th><th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of Clients">
+          <td>{{a.ida}}</td>
+          <td>{{a.nom}}</td>
+          <td>{{a.ville}}</td>
+          <td>
+            <button class="btn btn-outline-danger shadow-sm" (click)="confirmerSuppression(a)">
+              Delete
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-outline-primary shadow-sm ms-3" (click)="getAchteur(a)" data-bs-toggle="modal" data-bs-target="#myAchModalUpdate">
+              Update
+              <i class="bi bi-arrow-up-square"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-outline-success shadow-lg" data-bs-toggle="modal" data-bs-target="#myAchModal">
+        Add
+        <i class="bi bi-plus-square"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myAchModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter un acheteur</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form (ngSubmit)="postAcheteur(add)" #add="ngForm">
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Nom : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="testAch.nom"name="nom">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Ville : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="testAch.ville" name="ville">
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-success mx-auto" type="submit">Ajouter</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- The Update Modal -->
+<div class="modal" id="myAchModalUpdate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Update Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Mettre à jour un acheteur</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Update Modal body -->
+      <div class="modal-body">
+        <form (ngSubmit)="updateAchteur(updAch)" #updAch="ngForm">
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Nom : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="testAch.nom" name="nom">
+          </div>
+          <div class="input-group mb-3">
+            <div class="col">
+              <label class="form-label">Ville : </label>
+            </div>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="testAch.ville" name="ville">
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-primary mx-auto" type="submit" data-bs-dismiss="modal">Update</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
